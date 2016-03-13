@@ -10,6 +10,7 @@ module OAuth2
 
     def parse_token(response)
       puts "response: #{response.to_yaml}"
+      abort
       access_token = response.parsed.is_a?(Hash) && response.parsed['response']['access_token']
       raise Error.new(response) if options[:raise_errors] && !access_token
       access_token
